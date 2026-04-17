@@ -453,7 +453,7 @@ function PerfumePage({
         {/* Arabesque divider */}
         <div className="arabesque-divider w-full max-w-md mx-auto mb-16" />
 
-        {/* Ingredients */}
+        {/* Notes Pyramid */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -463,13 +463,13 @@ function PerfumePage({
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <Droplets className="w-5 h-5 text-gold" />
-              <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">المكونات</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">هرم العطر</h2>
             </div>
             <button
               onClick={() => setShowIngredients(!showIngredients)}
-              className="md:hidden flex items-center gap-2 px-4 py-2 rounded-full bg-sand-light text-foreground text-sm"
+              className="md:hidden flex items-center gap-2 px-4 py-2 rounded-full bg-sand-light text-foreground text-sm font-body"
             >
-              {showIngredients ? "إخفاء" : "عرض المكونات"}
+              {showIngredients ? "إخفاء النوتات" : "عرض النوتات"}
               <motion.div
                 animate={{ rotate: showIngredients ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
@@ -479,17 +479,68 @@ function PerfumePage({
             </button>
           </div>
 
-          <div className={`${showIngredients ? "block" : "hidden"} md:grid md:grid-cols-2 lg:grid-cols-3 gap-4`}>
-            {region.perfumeIngredients.map((ingredient, index) => (
+          <div className={`${showIngredients ? "block" : "hidden"} md:grid md:grid-cols-3 gap-6`}>
+            {region.notes.map((noteGroup, gIndex) => (
               <motion.div
-                key={ingredient}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.7 + index * 0.08 }}
-                className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gold/10 hover:border-gold/30 transition-all duration-300 hover:shadow-md group"
+                key={noteGroup.labelEn}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 + gIndex * 0.15 }}
+                className="relative bg-white rounded-2xl border border-gold/10 overflow-hidden group hover:border-gold/30 hover:shadow-lg transition-all duration-500"
               >
-                <div className="w-2 h-2 rounded-full bg-gold group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-foreground/80 text-sm font-body">{ingredient}</span>
+                {/* Decorative top stripe */}
+                <div className={`h-1 ${
+                  gIndex === 0 ? "bg-gradient-to-l from-emerald-400 to-emerald-600" :
+                  gIndex === 1 ? "bg-gradient-to-l from-gold-light to-gold-dark" :
+                  "bg-gradient-to-l from-amber-700 to-amber-900"
+                }`} />
+
+                <div className="p-6">
+                  {/* Note group header */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                      gIndex === 0 ? "bg-emerald-50 text-emerald-600" :
+                      gIndex === 1 ? "bg-amber-50 text-gold-dark" :
+                      "bg-stone-100 text-stone-600"
+                    }`}>
+                      {gIndex === 0 ? (
+                        <Wind className="w-5 h-5" />
+                      ) : gIndex === 1 ? (
+                        <Heart className="w-5 h-5" />
+                      ) : (
+                        <Sparkles className="w-5 h-5" />
+                      )}
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-foreground text-base">{noteGroup.label}</h3>
+                      <p className="text-muted-foreground text-xs font-body">{noteGroup.labelEn}</p>
+                    </div>
+                  </div>
+
+                  {/* Notes list */}
+                  <div className="space-y-3">
+                    {noteGroup.notes.map((note, nIndex) => (
+                      <motion.div
+                        key={note}
+                        initial={{ opacity: 0, x: 15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.9 + gIndex * 0.15 + nIndex * 0.1 }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className={`w-1.5 h-1.5 rounded-full ${
+                          gIndex === 0 ? "bg-emerald-400" :
+                          gIndex === 1 ? "bg-gold" :
+                          "bg-amber-800"
+                        }`} />
+                        <span className="text-foreground/80 text-sm font-body">{note}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Subtle hover corner accent */}
+                <div className="absolute top-4 left-4 w-8 h-8 border-t border-l border-gold/10 rounded-tl-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-gold/10 rounded-br-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             ))}
           </div>
