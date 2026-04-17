@@ -1,11 +1,27 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Amiri, Tajawal, Aref_Ruqaa } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const amiri = Amiri({
+  variable: "--font-amiri",
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+const tajawal = Tajawal({
+  variable: "--font-tajawal",
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "700"],
+  display: "swap",
+});
+
+const arefRuqaa = Aref_Ruqaa({
+  variable: "--font-aref",
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -30,8 +46,8 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} antialiased bg-cream text-foreground`}
-        style={{ fontFamily: 'var(--font-geist-sans), "Segoe UI", Tahoma, Arial, sans-serif' }}
+        className={`${amiri.variable} ${tajawal.variable} ${arefRuqaa.variable} antialiased bg-cream text-foreground`}
+        style={{ fontFamily: 'var(--font-tajawal), "Segoe UI", Tahoma, Arial, sans-serif' }}
       >
         {children}
         <Toaster />

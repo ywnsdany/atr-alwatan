@@ -153,34 +153,34 @@ function HeroSection({
           className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6"
         />
 
-        {/* Subtitle */}
+        {/* Subtitle - Accent calligraphic font */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={loaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-gold-light/80 text-lg md:text-xl tracking-[0.3em] mb-4 font-light"
+          className="text-gold-light/80 text-xl md:text-2xl tracking-[0.2em] mb-4 font-accent"
         >
           عطر الوطن
         </motion.p>
 
-        {/* Main title */}
+        {/* Main title - Amiri serif for elegance */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={loaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.7 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-heading"
         >
           سافر عبر الرائحة
           <br />
           <span className="text-gold-gradient">داخل وطنك</span>
         </motion.h1>
 
-        {/* Description */}
+        {/* Description - Tajawal for readability */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={loaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 1 }}
-          className="text-cream/70 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-cream/70 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-body font-light"
         >
           عطور فاخرة مستوحاة من مناطق المملكة العربية السعودية
           <br className="hidden md:block" />
@@ -197,7 +197,7 @@ function HeroSection({
             onClick={onEnter}
             className="group relative inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-l from-gold-dark via-gold to-gold-light text-white font-medium text-lg rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(201,169,110,0.4)] hover:scale-105"
           >
-            <span className="relative z-10">استكشف العطور</span>
+            <span className="relative z-10 font-heading text-lg">استكشف العطور</span>
             <ChevronLeft className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:-translate-x-1" />
             {/* Shimmer effect */}
             <div className="absolute inset-0 bg-gradient-to-l from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
@@ -252,7 +252,7 @@ function RegionsPage({ onExplore }: { onExplore: (region: Region) => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold text-foreground mb-4"
+            className="text-3xl md:text-5xl font-bold text-foreground mb-4 font-heading"
           >
             مناطق المملكة
           </motion.h2>
@@ -261,7 +261,7 @@ function RegionsPage({ onExplore }: { onExplore: (region: Region) => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed"
+            className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed font-body font-light"
           >
             خمس مناطق، خمس قصص فريدة، وخمسة عطور تعبّر عن روح كل بقعة في وطننا
           </motion.p>
@@ -297,10 +297,10 @@ function RegionsPage({ onExplore }: { onExplore: (region: Region) => void }) {
                 />
                 {/* Region name on image */}
                 <div className="absolute bottom-0 right-0 p-6">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-1 font-heading">
                     {region.name}
                   </h3>
-                  <p className="text-cream/80 text-sm">{region.subtitle}</p>
+                  <p className="text-cream/80 text-sm font-accent">{region.subtitle}</p>
                 </div>
                 {/* Hover glow effect */}
                 <div className="absolute inset-0 border-2 border-transparent rounded-2xl transition-all duration-500 group-hover:border-gold/30" />
@@ -308,7 +308,7 @@ function RegionsPage({ onExplore }: { onExplore: (region: Region) => void }) {
 
               {/* Card Content */}
               <div className="p-6">
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2 font-body">
                   {region.description}
                 </p>
 
@@ -316,11 +316,11 @@ function RegionsPage({ onExplore }: { onExplore: (region: Region) => void }) {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Droplets className="w-4 h-4 text-gold" />
-                    <span className="text-sm font-medium text-gold-dark">
+                    <span className="text-sm font-medium text-gold-dark font-heading">
                       {region.perfumeName}
                     </span>
                   </div>
-                  <button className="flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors duration-300">
+                  <button className="flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors duration-300 font-body">
                     استكشف العطر
                     <ChevronLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
                   </button>
@@ -339,9 +339,9 @@ function RegionsPage({ onExplore }: { onExplore: (region: Region) => void }) {
       <footer className="border-t border-gold/10 py-8 px-6 text-center">
         <div className="flex items-center justify-center gap-2 mb-3">
           <Droplets className="w-4 h-4 text-gold" />
-          <span className="text-gold-gradient font-bold text-lg">عطر الوطن</span>
+          <span className="text-gold-gradient font-bold text-xl font-accent">عطر الوطن</span>
         </div>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-muted-foreground text-sm font-body">
           عطور فاخرة مستوحاة من ثقافة المملكة العربية السعودية
         </p>
       </footer>
@@ -396,14 +396,14 @@ function PerfumePage({
           >
             <div className="flex items-center gap-3 mb-3">
               <MapPin className="w-4 h-4 text-gold-light" />
-              <span className="text-cream/80 text-sm">{region.name}</span>
+              <span className="text-cream/80 text-sm font-body">{region.name}</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-3">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-3 font-heading">
               {region.perfumeName}
             </h1>
             <div className="flex items-center gap-2">
               <div className="w-12 h-[1px] bg-gold" />
-              <p className="text-gold-light text-sm">{region.subtitle}</p>
+              <p className="text-gold-light text-sm font-accent">{region.subtitle}</p>
             </div>
           </motion.div>
         </div>
@@ -425,9 +425,9 @@ function PerfumePage({
             <div className="relative">
               <div className="flex items-center gap-3 mb-6">
                 <Heart className="w-5 h-5 text-gold" />
-                <h2 className="text-xl md:text-2xl font-bold text-foreground">الإحساس</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">الإحساس</h2>
               </div>
-              <p className="text-foreground/80 text-base md:text-lg leading-loose">
+              <p className="text-foreground/80 text-base md:text-lg leading-loose font-body">
                 {region.emotionalDescription}
               </p>
             </div>
@@ -443,9 +443,9 @@ function PerfumePage({
         >
           <div className="flex items-center gap-3 mb-6">
             <Sparkles className="w-5 h-5 text-gold" />
-            <h2 className="text-xl md:text-2xl font-bold text-foreground">عن العطر</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">عن العطر</h2>
           </div>
-          <p className="text-foreground/70 text-base leading-loose max-w-3xl">
+          <p className="text-foreground/70 text-base leading-loose max-w-3xl font-body">
             {region.perfumeDescription}
           </p>
         </motion.section>
@@ -463,7 +463,7 @@ function PerfumePage({
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <Droplets className="w-5 h-5 text-gold" />
-              <h2 className="text-xl md:text-2xl font-bold text-foreground">المكونات</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">المكونات</h2>
             </div>
             <button
               onClick={() => setShowIngredients(!showIngredients)}
@@ -489,7 +489,7 @@ function PerfumePage({
                 className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gold/10 hover:border-gold/30 transition-all duration-300 hover:shadow-md group"
               >
                 <div className="w-2 h-2 rounded-full bg-gold group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-foreground/80 text-sm">{ingredient}</span>
+                <span className="text-foreground/80 text-sm font-body">{ingredient}</span>
               </motion.div>
             ))}
           </div>
@@ -504,11 +504,11 @@ function PerfumePage({
         >
           <div className="flex items-center gap-3 mb-6">
             <MapPin className="w-5 h-5 text-gold" />
-            <h2 className="text-xl md:text-2xl font-bold text-foreground">
+            <h2 className="text-xl md:text-2xl font-bold text-foreground font-heading">
               عن المنطقة
             </h2>
           </div>
-          <p className="text-foreground/70 text-base leading-loose max-w-3xl">
+          <p className="text-foreground/70 text-base leading-loose max-w-3xl font-body">
             {region.description}
           </p>
         </motion.section>
@@ -521,12 +521,12 @@ function PerfumePage({
           className="text-center"
         >
           <div className="arabesque-divider w-full max-w-md mx-auto mb-8" />
-          <p className="text-muted-foreground mb-6">اكتشف عطور المناطق الأخرى</p>
+          <p className="text-muted-foreground mb-6 font-body">اكتشف عطور المناطق الأخرى</p>
           <button
             onClick={onBack}
             className="inline-flex items-center gap-3 px-8 py-3.5 bg-gradient-to-l from-gold-dark via-gold to-gold-light text-white font-medium rounded-full transition-all duration-500 hover:shadow-[0_0_30px_rgba(201,169,110,0.3)] hover:scale-105"
           >
-            <span>استكشف جميع المناطق</span>
+            <span className="font-heading">استكشف جميع المناطق</span>
             <ChevronLeft className="w-4 h-4" />
           </button>
         </motion.div>
@@ -536,9 +536,9 @@ function PerfumePage({
       <footer className="border-t border-gold/10 py-8 px-6 text-center mt-12">
         <div className="flex items-center justify-center gap-2 mb-3">
           <Droplets className="w-4 h-4 text-gold" />
-          <span className="text-gold-gradient font-bold text-lg">عطر الوطن</span>
+          <span className="text-gold-gradient font-bold text-xl font-accent">عطر الوطن</span>
         </div>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-muted-foreground text-sm font-body">
           عطور فاخرة مستوحاة من ثقافة المملكة العربية السعودية
         </p>
       </footer>
